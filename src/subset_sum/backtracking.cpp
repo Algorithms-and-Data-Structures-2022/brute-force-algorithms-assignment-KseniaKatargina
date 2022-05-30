@@ -48,6 +48,7 @@ namespace assignment {
       // ... сохранение в результат
       // ... нужно ли в этой ветке рекурсии рассматривать следующие элементы?
       indices.push_back(mask2indices(set,mask));
+      return;
     }
 
     // рассматриваем следующий элемент
@@ -57,8 +58,8 @@ namespace assignment {
     residual -= set[index];
 
     // рекурсивный вызов со включением/исключением элемента с текущим индексом ...
-    search(set,index,mask,sum,residual,target_sum,indices);
     search(set,index, set_bit(mask,index),sum + set[index],residual,target_sum,indices);
+    search(set,index,mask,sum,residual,target_sum,indices);
   }
 
 }  // namespace assignment
