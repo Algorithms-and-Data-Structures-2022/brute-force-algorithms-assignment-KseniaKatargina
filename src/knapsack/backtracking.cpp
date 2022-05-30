@@ -35,6 +35,8 @@ namespace assignment {
 
     // ... если текущая "польза" максимальна, обновляем наилучшую "пользу"
     if (profit > best_profit) {
+      best_profit = profit;
+      best_profit_mask = mask;
       // ...
     }
 
@@ -42,6 +44,8 @@ namespace assignment {
     index += 1;
 
     // ... рекурсивные вызовы со включением/исключением следующего элемента
+    solve(profits, weights, capacity, index, set_bit(mask, index), weight+weights[index], profit+profits[index], best_profit, best_profit_mask);
+    solve(profits, weights, capacity, index, mask, weight, profit, best_profit, best_profit_mask);
   }
 
 }  // namespace assignment
